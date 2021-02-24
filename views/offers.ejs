@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/offers.css">
+    <link rel="stylesheet" href="../css/footer.css">
+    <link rel="stylesheet" href="../css/sideNavBar.css">
+    <title>Document</title>
+</head>
+<body>
+    <%- include("includes/sideNavBar.ejs") %>
+    <%- include("includes/searchNavBar.ejs") %>
+    <main> 
+        <h1>Προσφορές</h1>
+        <h2>Δές επιλεγμένες προσφορές</h2>
+       <div id="storesFlexWrapper">
+        <div class="stores" id="masoutisWrapper"><a href="/offers/masoutis-offers" id="masoutisText">Μασούτης</a></div>
+        <div class="stores" id="abWrapper"><a href="#" id="abText">Βασιλόπουλος</a></div>
+        <div class="stores" id="sklavenitisWrapper"><a href="#" id="sklavenitisText">Σκλαβενίτης</a></div>
+        <div class="stores" id="masoutisWrapper"><a href="#" id="masoutisText">Μασούτης</a></div>
+        <div class="stores" id="abWrapper"><a href="#" id="abText">Βασιλόπουλος</a></div>
+        <div class="stores" id="sklavenitisWrapper"><a href="#" id="sklavenitisText">Σκλαβενίτης</a></div>
+       </div>
+    </main>
+    <%- include("includes/footer.ejs") %>
+    
+    <script src="/js/sideNavBar.js"></script>
+</body>
+</html>

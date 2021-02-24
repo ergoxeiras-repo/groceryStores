@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/base.css">
+    <link rel="stylesheet" href="../css/footer.css">
+    <link rel="stylesheet" href="../css/sideNavBar.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
+    <title><%= title %></title>
+</head>
+<body>
+    <%- include("includes/sideNavBar.ejs") %>
+    <%- include("includes/searchNavBar.ejs") %>
+    <main>
+        <p><a href="<%= breadcrumb[breadcrumb.length - 2].url %>"><%= breadcrumb[breadcrumb.length - 2].url %></a></p>
+        <h1><%= title %></h1>
+        <div id="gridWrapper">
+            <% mainTitles.forEach( function(mainTitle, index) { %>
+                <div class="gridChilds">
+                    <div class="imgWrapper">
+                        <img src=<%= images[index] %> alt="">
+                    </div>
+                    <h2><%= mainTitle %></h2>
+                    <div class="subTitlesWrapper">
+                        <% subTitles[index].forEach( function( subTitle, index2 ) { %>
+                            <p><a href="<%= subHrefs[index][index2] %>"><%= subTitle %></a></p>
+                        <% }); %>
+                    </div>
+                </div>
+            <% }); %>
+        </div>
+    </main>
+    <%- include("includes/footer.ejs") %>
+    
+    <script src="/js/base.js"></script>
+    <script src="/js/sideNavBar.js"></script>
+    <script src="/js/profileModal.js"></script>
+</body>
+</html>

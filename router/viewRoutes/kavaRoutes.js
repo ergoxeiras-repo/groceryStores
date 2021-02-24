@@ -1,0 +1,50 @@
+const express = require("express");
+
+const router = express.Router();
+
+const kavaController = require("../../controller/viewControllers/kavaController");
+const authController = require("../../controller/apiControllers/authController");
+
+router.get("/", authController.isLoggedIn, kavaController.kava);
+router.get("/krasia", authController.isLoggedIn, kavaController.krasia);
+router.get("/krasia/leuko-krasi", authController.isLoggedIn, kavaController.leukoKrasi);
+router.get("/krasia/kokkino-krasi", authController.isLoggedIn, kavaController.kokkinoKrasi);
+router.get("/krasia/roze-krasi", authController.isLoggedIn, kavaController.rozeKrasi);
+router.get("/krasia/glyka-krasia", authController.isLoggedIn, kavaController.glykaKrasia);
+router.get("/krasia/afrwdeis-oinoi", authController.isLoggedIn, kavaController.afrwdeisOinoi);
+router.get("/anapsyktika", authController.isLoggedIn, kavaController.anapsyktika);
+router.get("/anapsyktika/cola", authController.isLoggedIn, kavaController.cola);
+router.get("/anapsyktika/gkazoza", authController.isLoggedIn, kavaController.gkazoza);
+router.get("/anapsyktika/lemonada", authController.isLoggedIn, kavaController.lemonada);
+router.get("/anapsyktika/portokalada", authController.isLoggedIn, kavaController.portokalada);
+router.get("/anapsyktika/soda-tonic", authController.isLoggedIn, kavaController.sodaTonic);
+router.get("/anapsyktika/energeiaka-isotonika", authController.isLoggedIn, kavaController.energeiakaIsotonika);
+router.get("/anapsyktika/alles-geyseis", authController.isLoggedIn, kavaController.allesGeyseis);
+router.get("/xymoi-krya-rofhmata", authController.isLoggedIn, kavaController.xymoiKryaRofhmata);
+router.get("/xymoi-krya-rofhmata/xumoi-makras-diarkeias", authController.isLoggedIn, kavaController.xumoiMakrasDiarkeias);
+router.get("/xymoi-krya-rofhmata/ice-tea", authController.isLoggedIn, kavaController.iceTea);
+router.get("/xymoi-krya-rofhmata/ice-coffee", authController.isLoggedIn, kavaController.iceCoffee);
+router.get("/mpures", authController.isLoggedIn, kavaController.mpures);
+router.get("/mpures/lager", authController.isLoggedIn, kavaController.lager);
+router.get("/mpures/pils", authController.isLoggedIn, kavaController.pils);
+router.get("/mpures/weiss", authController.isLoggedIn, kavaController.weiss);
+router.get("/mpures/ale", authController.isLoggedIn, kavaController.ale);
+router.get("/mpures/radler", authController.isLoggedIn, kavaController.radler);
+router.get("/mpures/xwris-alkool", authController.isLoggedIn, kavaController.xwrisAlkool);
+router.get("/emfyalwmena-nera", authController.isLoggedIn, kavaController.emfyalwmenaNera);
+router.get("/emfyalwmena-nera/epitrapezio-metalliko-nero", authController.isLoggedIn, kavaController.epitrapezioMetallikoNero);
+router.get("/emfyalwmena-nera/anthrakouxo-nero", authController.isLoggedIn, kavaController.anthrakouxoNero);
+router.get("/pota", authController.isLoggedIn, kavaController.pota);
+router.get("/pota/ouiski", authController.isLoggedIn, kavaController.ouiski);
+router.get("/pota/vodka", authController.isLoggedIn, kavaController.vodka);
+router.get("/pota/tzin", authController.isLoggedIn, kavaController.tzin);
+router.get("/pota/roumi", authController.isLoggedIn, kavaController.roumi);
+router.get("/pota/tekila", authController.isLoggedIn, kavaController.tekila);
+router.get("/pota/mhliths", authController.isLoggedIn, kavaController.mhliths);
+router.get("/pota/tsipouro", authController.isLoggedIn, kavaController.tsipouro);
+router.get("/pota/ouzo", authController.isLoggedIn, kavaController.ouzo);
+router.get("/pota/koniak", authController.isLoggedIn, kavaController.koniak);
+router.get("/pota/liker", authController.isLoggedIn, kavaController.liker);
+router.get("/pota/aperitif", authController.isLoggedIn, kavaController.aperitif);
+
+module.exports = router;

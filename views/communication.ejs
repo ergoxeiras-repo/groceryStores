@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/communication.css">
+    <link rel="stylesheet" href="../css/footer.css">
+    <link rel="stylesheet" href="../css/sideNavBar.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
+    <title>Document</title>
+</head>
+<body>
+    <%- include("includes/sideNavBar.ejs") %>
+    <%- include("includes/searchNavBar.ejs") %>
+    <main>
+        <p><a href="<%= breadcrumb[breadcrumb.length - 2].url %>"><%= breadcrumb[breadcrumb.length - 2].url %></a></p>
+        <h1>Θέλεις να επικοινωνήσεις μαζί μας; Στείλε μας το μήνυμα σου</h1>
+        <div id="imageWrapper">
+            <img src="../images/chat.svg" alt="send email">
+        </div>
+        <form id="communication" action="/send-email">
+            <div>
+                <input type="text" name="name" placeholder="Το όνομα σου">
+            </div>
+            <div>
+                <input type="email" name="email" placeholder="Το email σου">
+            </div>
+            <div>
+                <textarea name="message" cols="30" rows="10" placeholder="Το μήνυμα σου"></textarea>
+            </div>
+            <div>
+                <input type="submit" value="Αποστολή μηνύματος">
+            </div>
+        </form>
+    </main>
+    <%- include("includes/footer.ejs") %>
+    
+    <script src="/js/sideNavBar.js"></script>
+</body>
+</html>

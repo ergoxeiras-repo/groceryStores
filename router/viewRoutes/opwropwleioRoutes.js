@@ -1,0 +1,53 @@
+const express = require("express");
+
+const router = express.Router();
+
+const opwropwleioController = require("../../controller/viewControllers/opwropwleioController");
+const authController = require("../../controller/apiControllers/authController");
+
+router.get("/", authController.isLoggedIn, opwropwleioController.opwropwleio);
+router.get("/frouta", authController.isLoggedIn, opwropwleioController.frouta);
+router.get("/frouta/mhla", authController.isLoggedIn, opwropwleioController.mhla);
+router.get("/frouta/mpananes", authController.isLoggedIn, opwropwleioController.mpananes);
+router.get("/frouta/portokalia", authController.isLoggedIn, opwropwleioController.portokalia);
+router.get("/frouta/mantarinia", authController.isLoggedIn, opwropwleioController.mantarinia);
+router.get("/frouta/greip-frut", authController.isLoggedIn, opwropwleioController.greipFrut);
+router.get("/frouta/axladia", authController.isLoggedIn, opwropwleioController.axladia);
+router.get("/frouta/lemonia", authController.isLoggedIn, opwropwleioController.lemonia);
+router.get("/frouta/laims", authController.isLoggedIn, opwropwleioController.laims);
+router.get("/frouta/aktinidia", authController.isLoggedIn, opwropwleioController.aktinidia);
+router.get("/frouta/karpouzia", authController.isLoggedIn, opwropwleioController.karpouzia);
+router.get("/frouta/peponia", authController.isLoggedIn, opwropwleioController.peponia);
+router.get("/frouta/rodakina", authController.isLoggedIn, opwropwleioController.rodakina);
+router.get("/frouta/nektarinia", authController.isLoggedIn, opwropwleioController.nektarinia);
+router.get("/frouta/verikoka", authController.isLoggedIn, opwropwleioController.verikoka);
+router.get("/frouta/fraoules", authController.isLoggedIn, opwropwleioController.fraoules);
+router.get("/frouta/vatomoura", authController.isLoggedIn, opwropwleioController.vatomoura);
+router.get("/frouta/suka", authController.isLoggedIn, opwropwleioController.suka);
+router.get("/frouta/damaskhna", authController.isLoggedIn, opwropwleioController.damaskhna);
+router.get("/frouta/exwtika-frouta", authController.isLoggedIn, opwropwleioController.exwtikaFrouta);
+router.get("/laxanika", authController.isLoggedIn, opwropwleioController.laxanika);
+router.get("/laxanika/aggouria", authController.isLoggedIn, opwropwleioController.aggouria);
+router.get("/laxanika/tomates", authController.isLoggedIn, opwropwleioController.tomates);
+router.get("/laxanika/patates", authController.isLoggedIn, opwropwleioController.patates);
+router.get("/laxanika/kremmudia", authController.isLoggedIn, opwropwleioController.kremmudia);
+router.get("/laxanika/skorda", authController.isLoggedIn, opwropwleioController.skorda);
+router.get("/laxanika/maroulia", authController.isLoggedIn, opwropwleioController.maroulia);
+router.get("/laxanika/roka", authController.isLoggedIn, opwropwleioController.roka);
+router.get("/laxanika/etoimes-salates", authController.isLoggedIn, opwropwleioController.etoimesSalates);
+router.get("/laxanika/laxano", authController.isLoggedIn, opwropwleioController.laxano);
+router.get("/laxanika/mprokolo", authController.isLoggedIn, opwropwleioController.mprokolo);
+router.get("/laxanika/kounoupidi", authController.isLoggedIn, opwropwleioController.kounoupidi);
+router.get("/laxanika/piperies", authController.isLoggedIn, opwropwleioController.piperies);
+router.get("/laxanika/melitzanes", authController.isLoggedIn, opwropwleioController.melitzanes);
+router.get("/laxanika/kolokuthakia", authController.isLoggedIn, opwropwleioController.kolokuthakia);
+router.get("/laxanika/fasolakia", authController.isLoggedIn, opwropwleioController.fasolakia);
+router.get("/laxanika/karota", authController.isLoggedIn, opwropwleioController.karota);
+router.get("/laxanika/rapanakia", authController.isLoggedIn, opwropwleioController.rapanakia);
+router.get("/laxanika/manitaria", authController.isLoggedIn, opwropwleioController.manitaria);
+router.get("/laxanika/kalampoki", authController.isLoggedIn, opwropwleioController.kalampoki);
+router.get("/laxanika/sparaggia", authController.isLoggedIn, opwropwleioController.sparaggia);
+router.get("/laxanika/pantzaria", authController.isLoggedIn, opwropwleioController.pantzaria);
+router.get("/laxanika/murwdika", authController.isLoggedIn, opwropwleioController.murwdika);
+
+module.exports = router;

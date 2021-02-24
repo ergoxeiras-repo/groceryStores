@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../css/displayProducts.css">
+    <link rel="stylesheet" href="../../css/footer.css">
+    <link rel="stylesheet" href="../../css/sideNavBar.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
+    <title><%= title %></title>
+</head>
+<body>
+    <%- include("includes/sideNavBar.ejs") %>
+    <%- include("includes/searchNavBar.ejs") %>
+    <main>
+      <p><a href="<%= breadcrumb[breadcrumb.length - 2].url %>"><%= breadcrumb[breadcrumb.length - 2].url %></a></p>
+      <%- include("includes/filterModal.ejs") %>
+  
+      <% if(title) { %>
+        <h1>Αποτελέσματα αναζήτησης για: <%= title %></h1>
+      <% } %>
+      
+      <div id="filterOrderByWrapper">
+        <div id="filter">
+          Φίλτρα <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="20pt" height="20pt" viewBox="0 0 20 20" version="1.1">
+            <g id="surface1">
+            <path style="fill:none;stroke-width:32;stroke-linecap:round;stroke-linejoin:round;stroke:rgb(0%,0%,0%);stroke-opacity:1;stroke-miterlimit:4;" d="M 368 128 L 448 128 M 64 128 L 304 128 M 368 384 L 448 384 M 64 384 L 304 384 M 208 256 L 448 256 M 64 256 L 144 256 " transform="matrix(0.0390625,0,0,0.0390625,0,0)"/>
+            <path style="fill:none;stroke-width:32;stroke-linecap:round;stroke-linejoin:round;stroke:rgb(0%,0%,0%);stroke-opacity:1;stroke-miterlimit:4;" d="M 368 128 C 368 145.7 353.7 160 336 160 C 318.3 160 304 145.7 304 128 C 304 110.3 318.3 96 336 96 C 353.7 96 368 110.3 368 128 Z M 368 128 " transform="matrix(0.0390625,0,0,0.0390625,0,0)"/>
+            <path style="fill:none;stroke-width:32;stroke-linecap:round;stroke-linejoin:round;stroke:rgb(0%,0%,0%);stroke-opacity:1;stroke-miterlimit:4;" d="M 208 256 C 208 273.7 193.7 288 176 288 C 158.3 288 144 273.7 144 256 C 144 238.3 158.3 224 176 224 C 193.7 224 208 238.3 208 256 Z M 208 256 " transform="matrix(0.0390625,0,0,0.0390625,0,0)"/>
+            <path style="fill:none;stroke-width:32;stroke-linecap:round;stroke-linejoin:round;stroke:rgb(0%,0%,0%);stroke-opacity:1;stroke-miterlimit:4;" d="M 368 384 C 368 401.7 353.7 416 336 416 C 318.3 416 304 401.7 304 384 C 304 366.3 318.3 352 336 352 C 353.7 352 368 366.3 368 384 Z M 368 384 " transform="matrix(0.0390625,0,0,0.0390625,0,0)"/>
+            </g>
+            </svg>
+        </div>
+        <% if(products.category === "offers") { %>
+          <select id="orderBy">
+            <option value="">Ταξινόμηση</option>
+            <option value="<%= `?sort=-discountPrice` %>">Φθήνουσα</option>
+            <option value="<%= `?sort=discountPrice` %>">Αύξουσα</option>
+          </select>
+        <% } else { %>
+          <select id="orderBy">
+            <option value="">Ταξινόμηση</option>
+            <option value="<%= `?query=${products.title}&category=${products.category}&sort=-discountPrice` %>">Φθήνουσα</option>
+            <option value="<%= `?query=${products.title}&category=${products.category}&sort=discountPrice` %>">Αύξουσα</option>
+          </select>
+        <% } %>
+      </div>
+      <% products.products.forEach(function(product){ %>
+        <div class="productWrapper">
+          <% if(product.storeName) { %>
+            <div class="store"><%= product.storeName %></div>
+          <% } %>
+          <% if(product.discountPercentage) { %>
+            <div class="discountPercentage"><%= product.discountPercentage %></div>
+          <% } %>
+            <img src=<%= product.imgLink %> alt="">
+            <h2><%= product.title %></h2>
+            <% if(product.startPrice === product.discountPrice) { %>
+              <div class="priceWrapper"><span class="textPrice">Τιμή:</span> <span class="price"><%= product.startPrice %>&#8364;</span></div>
+            <% } else { %>
+              <div class="priceWrapper"><span class="textPrice">Τιμή:</span> <span class="startPrice"><%= product.startPrice %>&#8364;</span> <span class="discountPrice"><%= product.discountPrice %>&#8364;</span></div>
+            <% } %>
+            <div class="storeLink"><a href=<%= product.pageLink %>> Δές το στο κατάστημα</a></div>
+        </div>
+      <% }) %>
+      <%- include("includes/pagination.ejs") %>
+    </main>
+    <%- include("includes/footer.ejs") %>
+    <script>
+      document.getElementById("orderBy").onchange = function() {
+        if (this.selectedIndex!==0) {
+            window.location.href = this.value;
+        }        
+    };
+    </script>
+    <script src="/js/sideNavBar.js"></script>
+    <script src="/js/productsModal.js"></script>
+    <script src="/js/profileModal.js"></script>
+    <script src="/js/pagination.js"></script>
+    <script src="/js/checkBoxPersist.js"></script>
+</body>
+</html>

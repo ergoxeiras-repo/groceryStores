@@ -1,0 +1,32 @@
+<div id="modal">
+    <div id="modalContent">
+        <div style="padding: 1rem;">
+            <svg xmlns='http://www.w3.org/2000/svg' id="closeBtn" class='ionicon' viewBox='0 0 512 512'><title>Close</title><path fill='none' stroke='currentColor' stroke-linecap='round' stroke-linejoin='round' stroke-width='32' d='M368 368L144 144M368 144L144 368'/></svg>
+        </div>
+        <h3>Επίλεξε Φίλτρα</h3>
+        <form method="GET">
+            <% if(products.category === "offers") { %>
+                <h4>Είδος Προσφοράς</h4>
+                <% products.offerTypes.forEach(function(offerType) { %>
+                    <div>
+                        <input type="checkbox" class="save-cb-state" name="<%= offerType._id %>" value="<%= offerType._id %>"><%= offerType._id %>
+                    </div>
+                <% }) %>
+                <h4>Καταστήματα</h4>
+                <% products.storeNames.forEach(function(storeName) { %>
+                    <div>
+                        <input type="checkbox" class="save-cb-state" name="<%= storeName._id %>" value="<%= storeName._id %>"><%= storeName._id %>
+                    </div>
+                <% }) %>
+            <% } else { %>
+                <h4>Καταστήματα</h4>
+                <% products.storeNames.forEach(function(storeName) { %>
+                    <div>
+                        <input type="checkbox" class="save-cb-state" name="storeNames[]" value="<%= storeName._id %>"><%= storeName._id %>
+                    </div>
+                <% }) %>
+            <% } %>
+            <button type="submit">Αναζήτηση</button>
+      </form>
+    </div>
+  </div>

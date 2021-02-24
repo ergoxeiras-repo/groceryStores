@@ -1,0 +1,33 @@
+<% if(products.category === "offers") { %>
+  <div id="paginationWrapper">
+      <% if(products.currentPage !== 1 && products.previousPage !== 1) { %>
+        <a class="button" href="<%= `?page=1&sort=${products.sort}` %>" >1</a>
+      <% } %>
+      <% if(products.hasPreviousPage) { %>
+        <a class="button" href="<%= `?page=${products.previousPage}&sort=${products.sort}` %>"><%= products.previousPage %></a>
+      <% } %>
+      <a class="button active" href="<%= `?page=${products.currentPage}&sort=${products.sort}` %>"><%= products.currentPage %></a>
+      <% if(products.hasNextPage) { %>
+        <a class="button" href="<%= `?page=${products.nextPage}&sort=${products.sort}` %>"><%= products.nextPage %></a>
+      <% } %>
+      <% if(products.lastPage !== products.currentPage && products.nextPage !== products.lastPage) { %>
+        <a class="button" href="<%= `?page=${products.lastPage}&sort=${products.sort}` %>"><%= products.lastPage %></a>
+      <% } %>
+  </div>
+<% } else { %>
+  <div id="paginationWrapper">
+    <% if(products.currentPage !== 1 && products.previousPage !== 1) { %>
+      <a class="button" href="<%= `?page=1&query=${products.title}&category=${products.category}&sort=${products.sort}` %>" >1</a>
+    <% } %>
+    <% if(products.hasPreviousPage) { %>
+      <a class="button" href="<%= `?page=${products.previousPage}&query=${products.title}&category=${products.category}&sort=${products.sort}` %>"><%= products.previousPage %></a>
+    <% } %>
+    <a class="button active" href="<%= `?page=${products.currentPage}&query=${products.title}&category=${products.category}&sort=${products.sort}` %>"><%= products.currentPage %></a>
+    <% if(products.hasNextPage) { %>
+      <a class="button" href="<%= `?page=${products.nextPage}&query=${products.title}&category=${products.category}&sort=${products.sort}` %>"><%= products.nextPage %></a>
+    <% } %>
+    <% if(products.lastPage !== products.currentPage && products.nextPage !== products.lastPage) { %>
+      <a class="button" href="<%= `?page=${products.lastPage}&query=${products.title}&category=${products.category}&sort=${products.sort}` %>"><%= products.lastPage %></a>
+    <% } %>
+  </div>
+<% } %>
