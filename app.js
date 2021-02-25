@@ -7,6 +7,7 @@ const xss = require("xss-clean");
 const hpp = require("hpp");
 const cookieParser = require("cookie-parser");
 const breadcrumb = require('express-url-breadcrumb');
+const compression = require("compression");
 
 // VIEW ROUTES
 const viewRouter = require("./router/viewRoutes/viewRoutes");
@@ -65,6 +66,7 @@ app.use(express.urlencoded({extended: true}));
 //Preventing HTTP parameter poloution
 // app.use(hpp());
 app.use(breadcrumb());
+app.use(compression());
 
 
 //VIEW ROUTERS
