@@ -11,7 +11,22 @@ exports.proiontaArtou = async function(req, res, next) {
                 "../images/τροφημα/προιοντα_αρτου/τσουρεκι.png"],
         hrefs: ["/proionta-artou/pswmi", "/proionta-artou/fryganies-kroyton",
                 "/proionta-artou/kritsinia-paximadia", "/proionta-artou/koulourakia-vouthmata",
-                "/proionta-artou/tsoureki"]
+                "/proionta-artou/tsoureki"],
+        subTitles: [
+            ["Φρέσκο Ψωμί", "Ψωμί του Τόστ", "Πίτες Ψωμάκια"],
+            ["Φρυγανιές", "Κρουτόν"],
+            ["Κριτσίνια", "Παξιμάδια"],
+            [],
+            []
+        ],
+        subHrefs: [
+            ["/proionta-artou/pswmi/fresko-pswmi", "/proionta-artou/pswmi/pswmi-tou-tost",
+            "/proionta-artou/pswmi/pites-pswmakia"],
+            ["/proionta-artou/fryganies-kroyton/fruganies", "/proionta-artou/fryganies-kroyton/kroyton"],
+            ["/proionta-artou/kritsinia-paximadia/kritsinia", "/proionta-artou/kritsinia-paximadia/paximadia"],
+            [],
+            []
+        ]
     });
 }
 

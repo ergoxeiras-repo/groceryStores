@@ -16,7 +16,38 @@ exports.proswpikhFrontida = async function(req, res, next) {
         hrefs: ["/proswpikh-frontida/gia-andres", "/proswpikh-frontida/gia-gunaikes",
                 "/proswpikh-frontida/proswpikh-ygieinh", "/proswpikh-frontida/proionta-swmatos",
                 "/proswpikh-frontida/frontida-malliwn", "/proswpikh-frontida/parafarmakeutika-eidh",
-                "/proswpikh-frontida/stomatikh-ugieinh", "/proswpikh-frontida/antihliaka"]
+                "/proswpikh-frontida/stomatikh-ugieinh", "/proswpikh-frontida/antihliaka"],
+        subTitles: [
+            ["Αφροί Ξυρίσματος", "Ξυριστικά μιας Χρήσης", "Ξυριστικές Μηχανές Ανταλλακτικά"],
+            ["Καθαρισμός Προσώπου", "Ενυδάτωση Προσώπου", "Ξυραφάκια", "Μακιγιάζ", "Αποτριχωτικά",
+            "Σερβιέτες Ταμπόν"],
+            ["Πάνες Ενηλίκων", "Βαμβάκια", "Μπατονέτες", "Αντισηπτικά"],
+            ["Αφρόλουτρα Αφροντούς", "Σφουγγάρια", "Αποσμητικά", "Σαπούνια", "Καλλωπισμός"],
+            ["Σαμπουάν Κρέμες", "Βαφές", "Spray Gel"],
+            ["Επιθέματα Επίδεσμοι", "Αλκοολούχοι Λοσιόν", "Γάντια Μάσκες Σύριγγες", "Προιόντα Προφύλαξης"],
+            ["Οδοντόβουρτσες", "Οδοντόκρεμες", "Στοματικά Διαλύματα", "Στοματικά Νήματα"],
+            ["Αντιηλιακά Σώματος"]
+        ],
+        subHrefs: [
+            ["/proswpikh-frontida/gia-andres/afroi-xurismatos", "/proswpikh-frontida/gia-andres/xuristika-mias-xrhshs",
+            "/proswpikh-frontida/gia-andres/xuristikes-mhxanes-antallaktika",
+            "/proswpikh-frontida/gia-andres/after-shave"],
+            ["/proswpikh-frontida/gia-gunaikes/katharismos-proswpou", "/proswpikh-frontida/gia-gunaikes/enudatwsh-proswpou",
+            "/proswpikh-frontida/gia-gunaikes/xurafakia", "/proswpikh-frontida/gia-gunaikes/makigiaz",
+            "/proswpikh-frontida/gia-gunaikes/apotrixwtika", "/proswpikh-frontida/gia-gunaikes/servietes-tampon"],
+            ["/proswpikh-frontida/proswpikh-ygieinh/panes-enhlikwn", "/proswpikh-frontida/proswpikh-ygieinh/vamvakia",
+            "/proswpikh-frontida/proswpikh-ygieinh/mpatonetes", "/proswpikh-frontida/proswpikh-ygieinh/antishptika"],
+            ["/proswpikh-frontida/proionta-swmatos/afroloutra-afrontous", "/proswpikh-frontida/proionta-swmatos/sfouggaria",
+            "/proswpikh-frontida/proionta-swmatos/aposmhtika", "/proswpikh-frontida/proionta-swmatos/sapounia",
+            "/proswpikh-frontida/proionta-swmatos/kallwpismos"],
+            ["/proswpikh-frontida/frontida-malliwn/sampouan-kremes", "/proswpikh-frontida/frontida-malliwn/vafes",
+            "/proswpikh-frontida/frontida-malliwn/spary-gel"],
+            ["/proswpikh-frontida/parafarmakeutika-eidh/epithemata-epidesmoi", "/proswpikh-frontida/parafarmakeutika-eidh/alkoolouxoi-losion",
+            "/proswpikh-frontida/parafarmakeutika-eidh/gantia-maskes-surigges", "/proswpikh-frontida/parafarmakeutika-eidh/proionta-profylaxhs"],
+            ["/proswpikh-frontida/stomatikh-ugieinh/odontovoyrtses", "/proswpikh-frontida/stomatikh-ugieinh/odontokremes",
+            "/proswpikh-frontida/stomatikh-ugieinh/stomatika-dialymata", "/proswpikh-frontida/stomatikh-ugieinh/stomatika-nhmata"],
+            ["/proswpikh-frontida/antihliaka/antihliaka-swmatos"]
+        ]
     });
 }
 

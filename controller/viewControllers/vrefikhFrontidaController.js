@@ -15,7 +15,27 @@ exports.vrefikhFrontida = function(req, res) {
         hrefs: ["/vrefikh-frontida/vrefiko-gala", "/vrefikh-frontida/vrefikes-trofes",
                 "/vrefikh-frontida/vrefikes-panes-mwromanthla", "/vrefikh-frontida/peripoihsh-swmatos",
                 "/vrefikh-frontida/aksesouar", "/vrefikh-frontida/vrefikh-ugieinh-dontiwn",
-                "/vrefikh-frontida/vrefiko-farmakeio", "/vrefikh-frontida/vrefika-aporrypantika"]
+                "/vrefikh-frontida/vrefiko-farmakeio", "/vrefikh-frontida/vrefika-aporrypantika"],
+        subTitles: [
+            ["1ης ηλικίας", "2ης ηλικίας", "3ης ηλικίας"],
+            ["Βρεφικές Κρέμες", "Βρεφικά Γιαούρτια", "Βρεφικά Σνάκ"],
+            ["Βρεφικές Πάνες", "Μωρομάντηλα"],
+            ["Σαμπουάν Αφρόλουτρα", "Κρέμες Πούδρες Λάδι"],
+            ["Πιατάκια Κουταλάκια Πιρουνάκια", "Βρεφικά Ψαλιδάκια"],
+            ["Παιδικά Επιθέματα"],
+            ["Υγρά Απορρυπαντικά", "Μαλακτικά"]
+        ],
+        subHrefs: [
+            ["/vrefikh-frontida/vrefiko-gala/vrefiko-gala-1hs-hlikias", "/vrefikh-frontida/vrefiko-gala/vrefiko-gala-2hs-hlikias",
+            "/vrefikh-frontida/vrefiko-gala/vrefiko-gala-3hs-hlikias"],
+            ["/vrefikh-frontida/vrefikes-trofes/vrefikes-kremes", "/vrefikh-frontida/vrefikes-trofes/vrefika-giaourtia", 
+            "/vrefikh-frontida/vrefikes-trofes/vrefika-snack"],
+            ["/vrefikh-frontida/vrefikes-panes-mwromanthla/vrefikes-panes", "/vrefikh-frontida/vrefikes-panes-mwromanthla/mwromanthla"],
+            ["/vrefikh-frontida/peripoihsh-swmatos/sampouan-afroloutra", "/vrefikh-frontida/peripoihsh-swmatos/kremes-poudres-ladi"],
+            ["/vrefikh-frontida/aksesouar/piatakia-koutalakia-pirounakia", "/vrefikh-frontida/aksesouar/vrefika-psalidakia"],
+            ["/vrefikh-frontida/vrefiko-farmakeio/paidika-epithemata"],
+            ["/vrefikh-frontida/vrefika-aporrypantika/ygra-aporrypantika", "/vrefikh-frontida/vrefika-aporrypantika/malaktika"]
+        ]
     });
 }
 

@@ -63,9 +63,7 @@ h1 {
 }
 
 .inputWrapper input[type="submit"] {
-    border: 1px solid #b95f89;
-    background-color: #b95f89;
-    color: white;
+    background-color: white;
 }
 
 .inputWrapper a {

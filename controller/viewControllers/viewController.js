@@ -3,8 +3,14 @@ const Offers = require("../../model/offersModel");
 const Products = require("../../model/productModel");
 const { product } = require("puppeteer");
 
-exports.index = function(req, res) {
-    res.status(200).render("index");
+exports.index = async function(req, res) {
+    
+    const selectedForYou = await Offers.find({storeName: "Μασούτης", offerType: { $ne: "Web Only"}})
+    .limit(10);
+    
+    res.status(200).render("index", {
+        selectedForYou
+    });
 }
 
 exports.search = async function(req, res) {

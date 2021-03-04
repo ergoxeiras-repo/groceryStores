@@ -1,7 +1,3 @@
-footer {
-    background-color: white;
-}
-
 #footerFlexWrapper {
     width: 90%;
     margin: 2rem auto 0 auto;
@@ -58,8 +54,4 @@ footer {
     padding: 2px;
     color: #b95f89;
     font-size: 2.5rem;
-}
-
-.fa-shopping-cart {
-    
 }

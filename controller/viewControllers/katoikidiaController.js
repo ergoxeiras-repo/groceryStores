@@ -8,7 +8,20 @@ exports.katoikidia = async function(req, res, next) {
                 "../images/κατοικιδια/για_γατες.jpg",
                 "../images/κατοικιδια/αξεσουαρ.jpg"],
         hrefs: ["/katoikidia/eidh-gia-skyloys", "/katoikidia/eidh-gia-gates",
-                "/katoikidia/aksesouar-katoikidiwn"]
+                "/katoikidia/aksesouar-katoikidiwn"],
+        subTitles: [
+            ["Υγρή Τροφή", "Ξηρά Τροφή", "Σνάκ για Σκύλους", "Αξεσουάρ για Σκύλους"],
+            ["Υγρή Τροφή", "Ξηρά Τροφή", "Σνάκ για Γάτες", "Άμμος για Γάτες", "Αξεσουάρ για Γάτες"],
+            ["Αξεσουάρ Κατοικιδίων"]
+        ],
+        subHrefs: [
+            ["/katoikidia/eidh-gia-skyloys/ygrh-trofh", "/katoikidia/eidh-gia-skyloys/xhra-trofh",
+            "/katoikidia/eidh-gia-skyloys/snak-gia-skulous", "/katoikidia/eidh-gia-skyloys/aksesoyar-gia-skulous"],
+            ["/katoikidia/eidh-gia-gates/ygrh-trofh", "/katoikidia/eidh-gia-gates/xhra-trofh",
+            "/katoikidia/eidh-gia-gates/snak-gia-gates", "/katoikidia/eidh-gia-gates/ammos-gia-gates",
+            "/katoikidia/eidh-gia-gates/aksesoyar-gia-gates"],
+            ["/katoikidia/aksesouar-katoikidiwn"]
+        ]
     });
 }
 
