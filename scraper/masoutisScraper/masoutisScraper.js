@@ -2927,18 +2927,18 @@ async function scrapeKatharistikaXartikaEidhOikiakhsURLs() {
     }
 }
 
-exports.scrapeBabyCareURLs = scrapeBabyCareURLs;
-exports.scrapeDrinksURLs = scrapeDrinksURLs;
-exports.scrapePetsURLs = scrapePetsURLs;
-exports.scrapePersonalCareURLs = scrapePersonalCareURLs;
-exports.scrapeHealthyDietURLs = scrapeHealthyDietURLs;
-exports.scrapeFruitsURLs = scrapeFruitsURLs; 
-exports.scrapeDairyRefrigeratedItemsURLs = scrapeDairyRefrigeratedItemsURLs;
-exports.scrapeAllantikaTuriaDelicatessenURLs = scrapeAllantikaTuriaDelicatessenURLs;
-exports.scrapeTupopoihmenaTrofimaURLs = scrapeTupopoihmenaTrofimaURLs;
-exports.scrapeFreskoKreasKaiPsari = scrapeFreskoKreasKaiPsari;
-exports.scrapeKatepsugmenaTrofimaURLs = scrapeKatepsugmenaTrofimaURLs;
-exports.scrapePrwinoKaiRofhmaraURLs = scrapePrwinoKaiRofhmataURLs;
+// exports.scrapeBabyCareURLs = scrapeBabyCareURLs;
+// exports.scrapeDrinksURLs = scrapeDrinksURLs;
+// exports.scrapePetsURLs = scrapePetsURLs;
+// exports.scrapePersonalCareURLs = scrapePersonalCareURLs;
+// exports.scrapeHealthyDietURLs = scrapeHealthyDietURLs;
+// exports.scrapeFruitsURLs = scrapeFruitsURLs; 
+// exports.scrapeDairyRefrigeratedItemsURLs = scrapeDairyRefrigeratedItemsURLs;
+// exports.scrapeAllantikaTuriaDelicatessenURLs = scrapeAllantikaTuriaDelicatessenURLs;
+// exports.scrapeTupopoihmenaTrofimaURLs = scrapeTupopoihmenaTrofimaURLs;
+// exports.scrapeFreskoKreasKaiPsari = scrapeFreskoKreasKaiPsari;
+// exports.scrapeKatepsugmenaTrofimaURLs = scrapeKatepsugmenaTrofimaURLs;
+exports.scrapePrwinoKaiRofhmataURLs = scrapePrwinoKaiRofhmataURLs;
 exports.scrapeProiontaArtouURLs = scrapeProiontaArtouURLs;
 exports.scrapeSnacksURLs = scrapeSnacksURLs;
 exports.scrapeKatharistikaXartikaEidhOikiakhsURLs = scrapeKatharistikaXartikaEidhOikiakhsURLs;

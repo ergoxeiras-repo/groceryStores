@@ -85,8 +85,6 @@ class Scraper {
         const startPrices = await this.getStartPrices();
     
         const discountPrices = await this.getDiscountPrices();
-
-        console.log(`page links length = ${pageLinks.length}`);
     
         if(pageLinks.length !== 0) {
             let counter = 0;
@@ -106,7 +104,6 @@ class Scraper {
                         storeName: "Βασιλόπουλος",
                         category: this.getCategory()
                     })
-                    console.log(this.getCategory());
                 } catch (error) {
                     console.log(`error saving the data, error: ${error}`);
                 }
@@ -133,19 +130,22 @@ class Scraper {
     }
 
     async waitForCssToload() {
-        await this.page.waitForSelector(".quantity-price"); 
+        await this.page.waitForSelector("div[data-testid='product-block-price']"); 
         await this.page.waitFor(3000);
     }
     
     async getProductsArray() {
         return await this.page.evaluate(() => {
-            return Array.from(document.querySelectorAll(".data-item")).length;//.productList
+            let temp = Array.from(document.querySelectorAll("div[data-testid='product-block']")).length;//.productList
+            console.log("temp value = ");
+            console.log(temp);
+            return temp;
         });
     }
     
     async getPageLinks() {
         return await this.page.evaluate( ()=> {
-                        return Array.from(document.querySelectorAll(".component-image")) //".catImgCont"
+                        return Array.from(document.querySelectorAll("a[data-testid='product-block-image-link']")) //".catImgCont"
                                     .map( element => {
                                         return element.href;
                                     });
@@ -154,7 +154,7 @@ class Scraper {
     
     async getImgLinks() {
         return await this.page.evaluate( () => {
-                        return Array.from(document.querySelectorAll(".image")) //".productImage"
+                        return Array.from(document.querySelectorAll("img[data-testid='product-block-image']")) //".productImage"
                                     .map( (element) => {
                                         return element.src
                                     });
@@ -163,7 +163,7 @@ class Scraper {
     
     async getTitles() {
         const temp = await this.page.evaluate( () => {
-                        return Array.from(document.querySelectorAll(".ellipsis")) //".productImage"
+                        return Array.from(document.querySelectorAll("h6[data-testid='product-block-product-name']")) //".productImage"
                                     .map( (element) => {
                                         return element.innerText;
                                     });
@@ -187,9 +187,9 @@ class Scraper {
     
     async getStartPrices() {
         return await this.page.evaluate( () => {
-                        return Array.from(document.querySelectorAll(".quantity-price")) //".pStartPrice"
+                        return Array.from(document.querySelectorAll("div[data-testid='product-block-price']")) //".pStartPrice"
                                     .map( (element) => {
-                                        return parseFloat(element.innerText.replace(",", ".").slice(1, element.length));
+                                        return parseFloat(element.innerText.replace(",", ".").replace(/€|~/gi, ""));
                                     })
                                 });
     };
@@ -197,15 +197,15 @@ class Scraper {
     async getDiscountPrices() {
         return await this.page.evaluate( () => {
                                             return Array
-                                                    .from(document.querySelectorAll(".ProductProperties"))
+                                                    .from(document.querySelectorAll(".product-item"))
                                                     .map(function(element) {
-                                                        let discount = element.querySelector(".promotion-price");
-                                                        let start = element.querySelector(".quantity-price");
+                                                        let discount = element.querySelector("div[data-testid='product-block-price']");
+                                                        let start = element.querySelector("div[data-testid='product-block-old-price']");
                                                     
                                                         if(discount !== null) {
-                                                            return parseFloat(discount.innerText.replace(",", ".").slice(1, discount.length));
+                                                            return parseFloat(discount.innerText.replace(",", ".").replace(/€|~/gi, ""));
                                                         } else {
-                                                            return parseFloat(start.innerText.replace(",", ".").slice(1, start.length));
+                                                            return parseFloat(start.innerText.replace(",", ".").replace(/€|~/gi, ""));
                                                         }
                                                     });
                                         });

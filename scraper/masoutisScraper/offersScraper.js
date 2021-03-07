@@ -3,10 +3,11 @@ const Offers = require("../../model/offersModel");
 const mongoose = require("mongoose");
 
 mongoose.connect('mongodb+srv://christos:RWNgslzlcYCpAAZA@cluster0.rx7oj.mongodb.net/myGroceryTest?retryWrites=true&w=majority', { useNewUrlParser: true, useCreateIndex: true, useUnifiedTopology: true });
+// mongoose.connect("mongodb+srv://groceryDB:ED4FhZVdfP6VHzXV@cluster0-bjjsz.mongodb.net/groceryDB?retryWrites=true&w=majority", { useNewUrlParser: true, useCreateIndex: true, useUnifiedTopology: true });
 
 mongoose.connection
 .once('open', function() {
-    console.log("Connected to test myGroceryTestDB");
+    console.log("Connected to DB");
 })
 .on('error', error => {
     console.warn('Warning', error);
@@ -14,7 +15,7 @@ mongoose.connection
 
 const urls = [
     "https://eshop.masoutis.gr/categories/index/prosfores?item=0&subitem=2001&subdescr=web-only",
-    "https://eshop.masoutis.gr/categories/index/prosfores?item=0&subitem=2105&subdescr=trihmero-27-31-12"
+    "https://eshop.masoutis.gr/categories/index/prosfores?item=0&subitem=2166&subdescr=sunduastikes-prosfores-fulladiou-17-2-8-3"
 ]
 
 async function offersScraper() {
@@ -31,8 +32,7 @@ async function offersScraper() {
         const discountPercentages = await scrapeOffers.getDiscountPercentage(page, ".productList .pDscntPercent");
         const store = "Μασούτης";
         const offerType = i === 0 ? "Web Only" : "Προσφορές Τριημέρου";
-        console.log(`i=${i}`);
-        console.log(imgLinks);
+        
         for(let i=0; i<titles.length; i++) {
             try {
                 await Offers.create({

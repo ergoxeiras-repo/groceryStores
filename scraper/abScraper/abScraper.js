@@ -1459,7 +1459,7 @@ async function scrapeTupopoihmenaTrofimaURLs() {
         await scraper.scrapeDataFromURL(url, [-1]);
 
         // Xrwma zaxaroplastikhs 
-        url = "https://eshop.masoutis.gr/categories/index/search?text=%CF%87%CF%81%CF%89%CE%BC%CE%B1%20%CE%B6%CE%B1%CF%87%CE%B1%CF%81%CE%BF%CF%80%CE%BB%CE%B1%CF%83%CF%84%CE%B9%CE%BA%CE%B7%CF%82";
+        url = "https://www.ab.gr/click2shop/click2shop/Vasika-typopoiimena-trofima/Eidi-zacharoplastikis/Ylika-zacharoplastikis/c/010008003?q=:relevance&sort=relevance";
         scraper.setCategory("Τυπόποιόμένα Τρόφημα", "Είδη Ζαχαροπλαστικής", "Χρώμα Ζαχαροπλαστικής");
         await scraper.scrapeDataFromURL(url, [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17,
              18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41,
