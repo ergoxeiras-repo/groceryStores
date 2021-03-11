@@ -163,16 +163,23 @@ exports.jobSearch = function(req, res) {
 async function getOffers(req) {
     // const cookiesArray = Object.values(req.cookies);
     const cookies = req.cookies || {};
+    // console.log("cookies");
+    // console.log(cookies);
+
     const offerType = [];
-    const storeName = [];
+    const stores = [];
 
     for(key in req.cookies){
         if(key.startsWith("offer")){
             offerType.push(cookies[key]);
         } else if(key.startsWith("stores")){
-            storeName.push(cookies[key]);
+            stores.push(cookies[key]);
         }
     }
+    // console.log("offerType");
+    // console.log(offerType);
+    // console.log("storeName");
+    // console.log(storeName);
     
     const query = {};
     
@@ -180,9 +187,10 @@ async function getOffers(req) {
         query.offerType = offerType;
     }
     
-    if(storeName.length > 0){
-        query.storeName = storeName;
+    if(stores.length > 0){
+        query.stores = stores;
     }
+    console.log("query");
     console.log(query);
         
     // In order not to delete parameters from req.query, we make a new object and not a copy
@@ -202,6 +210,7 @@ async function getOffers(req) {
     ]); 
 
     let totalProducts = await Offers.find(query).countDocuments();
+    console.log
     // console.log(`totalProducts= ${totalProducts}`);
     // console.log(`queryCopy`);
     // console.log(queryCopy);
