@@ -4,11 +4,17 @@ const Products = require("../../model/productModel");
 
 exports.index = async function(req, res) {
     
-    const selectedForYou = await Offers.find({storeName: "Μασούτης", offerType: { $ne: "Web Only"}})
-    .limit(10);
+    const masoutisOffers = await Offers.find({stores: "Μασούτης", offerType: { $ne: "Web Only"}})
+    .limit(5);
+
+    const abOffers = await Offers.find({stores: "Βασιλόπουλος"})
+    .limit(5);
+
+    console.log(masoutisOffers.concat(abOffers));
+
     
     res.status(200).render("index", {
-        selectedForYou
+        selectedForYou: masoutisOffers.concat(abOffers)
     });
 }
 

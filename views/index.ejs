@@ -196,8 +196,8 @@
         <h3>Δές τις πιο πρόσφατες προσφορές</h3>
         <% selectedForYou.forEach(function(product){ %>
             <div class="productWrapper">
-              <% if(product.storeName) { %>
-                <div class="store"><%= product.storeName %></div>
+              <% if(product.stores) { %>
+                <div class="store"><%= product.stores %></div>
               <% } %>
               <% if(product.discountPercentage) { %>
                 <div class="discountPercentage"><%= product.discountPercentage %></div>
