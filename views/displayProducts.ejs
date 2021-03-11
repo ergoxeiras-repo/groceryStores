@@ -49,6 +49,9 @@
           <% if(product.storeName) { %>
             <div class="store"><%= product.storeName %></div>
           <% } %>
+          <% if(product.stores) { %>
+            <div class="store"><%= product.stores %></div>
+          <% } %>
           <% if(product.discountPercentage) { %>
             <div class="discountPercentage"><%= product.discountPercentage %></div>
           <% } %>

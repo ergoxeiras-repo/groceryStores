@@ -31,17 +31,23 @@ class OffersScraper extends Scraper{
 
     async scrapeData(exclusion) {
 
-        const pageLinks = await this.getPageLinks();  
+        const pageLinks = await this.getPageLinks();
+        console.log(pageLinks.length)  
     
         const imgLinks = await this.getImgLinks();
+        console.log(imgLinks.length)
     
         const titles = await this.getTitles();
+        console.log(titles.length)
     
         const startPrices = await this.getStartPrices();
+        console.log(startPrices.length)
     
         const discountPrices = await this.getDiscountPrices();
+        console.log(discountPrices.length)
 
         const discountContent = await this.getDiscountContent();
+        console.log(discountContent.length)
     
         if(pageLinks.length !== 0) {
             let counter = 0;
@@ -59,7 +65,7 @@ class OffersScraper extends Scraper{
                         discountPrice: discountPrices[i],
                         discountPercentage: discountContent[i],
                         pageLink: pageLinks[i],
-                        storeName: "Βασιλόπουλος",
+                        stores: "Βασιλόπουλος",
                         offerType: "Συνδιασμένες Αγορές"
                     })
                 } catch (error) {
@@ -90,7 +96,7 @@ class OffersScraper extends Scraper{
 
     async getDiscountContent() {
         return await this.page.evaluate( ()=> {
-                        return Array.from(document.querySelectorAll("button[data-testid='product-block-promo-label'] span")) //".catImgCont"
+                        return Array.from(document.querySelectorAll("div[data-testid='product-block-attributes'] span")) //".catImgCont"
                                     .map( element => {
                                         return element.textContent;
                                     });

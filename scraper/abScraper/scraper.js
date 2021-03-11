@@ -168,21 +168,8 @@ class Scraper {
                                         return element.innerText;
                                     });
                                 });
-        
-        const data = [];
-        let j = 0;
-        
-        for(let i=0; i<temp.length; i = i + 2){
-            
-            if(i === 0) {
-                data[j] = temp[i] + " " + temp[i+1];
-            } else {
-                j = j + 1;
-                data[j] = temp[i] + " " + temp[i+1];
-            }
-        }
 
-        return data;
+        return temp;
     };
     
     async getStartPrices() {

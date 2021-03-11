@@ -15,11 +15,11 @@ mongoose.connection
 
 const urls = [
     "https://eshop.masoutis.gr/categories/index/prosfores?item=0&subitem=2001&subdescr=web-only",
-    "https://eshop.masoutis.gr/categories/index/prosfores?item=0&subitem=2166&subdescr=sunduastikes-prosfores-fulladiou-17-2-8-3"
+    "https://eshop.masoutis.gr/categories/index/prosfores?item=0&subitem=1&subdescr=prosfores-trihmerou"
 ]
 
 async function offersScraper() {
-    await Offers.deleteMany();
+    // await Offers.deleteMany();
     const page = await scrapeOffers.createPage();
     for(let i=0; i<urls.length; i++) {
         await page.goto(urls[i]);
@@ -42,7 +42,7 @@ async function offersScraper() {
                     startPrice: startPrices[i],
                     discountPrice: discountPrices[i],
                     discountPercentage: discountPercentages[i],
-                    storeName: store,
+                    stores: store,
                     offerType: offerType
                 })
                 } catch (error) {

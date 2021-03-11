@@ -76,7 +76,7 @@ async function getStartPrices(page) {
     return await page.evaluate( () => {
                     return Array.from(document.querySelectorAll(".pStartPrice"))
                                 .map( (element) => {
-                                    return parseFloat(element.innerText);
+                                    return parseFloat(element.innerText).toFixed(2);
                                 })
                             });
 };
@@ -85,7 +85,7 @@ async function getDiscountPrices(page) {
     return await page.evaluate( () => {
                     return Array.from(document.querySelectorAll(".pDscntPrice"))
                                 .map( (element) => {
-                                    return parseFloat(element.innerText);
+                                    return parseFloat(element.innerText).toFixed(2);
                                 })
                             });
 };

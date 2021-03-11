@@ -1,7 +1,15 @@
 const Products = require("../../model/productModel");
 
 exports.getProducts = async function(req, category) {
-    const cookiesArray = Object.values(req.cookies);
+    // const cookiesArray = Object.values(req.cookies);
+    const cookies = req.cookies || {};
+    const storeName = [];
+
+    for(key in req.cookies){
+        if(key.startsWith("storeName")){
+            storeName.push(cookies[key]);
+        }
+    }
     const page = parseInt(req.query.page || 1); 
     const sort = req.query.sort || "discountPrice";
     const itemsPerPage = 10;
@@ -12,9 +20,9 @@ exports.getProducts = async function(req, category) {
 
     let totalProducts;
     let products;
-    if(cookiesArray.length !== 0) {
-        totalProducts = await Products.countDocuments({ "category.subCategory": category, storeName: { $in: cookiesArray } });
-        products = await Products.find({ "category.subCategory": category, storeName: { $in: cookiesArray } }); 
+    if(storeName.length > 0) {
+        totalProducts = await Products.countDocuments({ "category.subCategory": category, storeName: { $in: storeName } });
+        products = await Products.find({ "category.subCategory": category, storeName: { $in: storeName } }); 
     } else {
         totalProducts = await Products.countDocuments({"category.subCategory": category});
         products = await Products.find({"category.subCategory": category})

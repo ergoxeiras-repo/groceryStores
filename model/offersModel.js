@@ -6,7 +6,7 @@ const offersSchema = new mongoose.Schema({
     startPrice: Number,
     discountPrice: Number,
     pageLink: String,
-    storeName: String,
+    stores: String,
     offerType: String,
     discountPercentage: {
         type: String,

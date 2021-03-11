@@ -1,7 +1,6 @@
 const callAPI = require("./callAPI");
 const Offers = require("../../model/offersModel");
 const Products = require("../../model/productModel");
-const { product } = require("puppeteer");
 
 exports.index = async function(req, res) {
     
@@ -109,7 +108,6 @@ exports.katharistikaΧartikaΕidhΟikiakhs = function(req, res) {
 
 exports.offers = async function(req, res) {
     const products = await getOffers(req);
-    console.log(products);
 
     res.status(200).render("displayProducts", {
         title: "Επιλεγμένες Προσφορές",
@@ -157,52 +155,85 @@ exports.jobSearch = function(req, res) {
 }
 
 async function getOffers(req) {
-    const cookiesArray = Object.values(req.cookies);
-    console.log("cookies");
-    console.log(cookiesArray);
+    // const cookiesArray = Object.values(req.cookies);
+    const cookies = req.cookies || {};
+    const offerType = [];
+    const storeName = [];
+
+    for(key in req.cookies){
+        if(key.startsWith("offer")){
+            offerType.push(cookies[key]);
+        } else if(key.startsWith("stores")){
+            storeName.push(cookies[key]);
+        }
+    }
+    
+    const query = {};
+    
+    if(offerType.length > 0){
+        query.offerType = offerType;
+    }
+    
+    if(storeName.length > 0){
+        query.storeName = storeName;
+    }
+    console.log(query);
+        
+    // In order not to delete parameters from req.query, we make a new object and not a copy
+    // const queryCopy = {...req.query};
+    // const excludedFields = ["page", "sort"];
+    // excludedFields.forEach(el => delete queryCopy[el])
     const page = parseInt(req.query.page || 1); 
     const sort = req.query.sort || "discountPrice";
     const itemsPerPage = 10;
     const offerTypes = await Offers.aggregate([
-        { $group: { _id: "$offerType" } }
+        { $group: { _id: "$offerType" } },
+        { $sort: { "_id": 1 } }
     ]);
     const storeNames = await Offers.aggregate([
-        { $group: { _id: "$storeName" } }
+        { $group: { _id: "$stores" } },
+        { $sort: { "_id": 1 } }
     ]); 
 
-    let totalProducts;
-    let products;
-    if(cookiesArray.length !== 0) {
-        totalProducts = await Offers.countDocuments({ offerType: { $in: cookiesArray}, storeName: { $in: cookiesArray } });
-        if(totalProducts !== 0) {
-            products = await Offers.find({ offerType: { $in: cookiesArray}, storeName: { $in: cookiesArray } })
+    let totalProducts = await Offers.find(query).countDocuments();
+    // console.log(`totalProducts= ${totalProducts}`);
+    // console.log(`queryCopy`);
+    // console.log(queryCopy);
+    // console.log(`page= ${page}`);
+    // console.log(`itemsPerPage= ${itemsPerPage}`);
+    let products = await Offers.find(query)
             .skip((page - 1) * itemsPerPage)
             .limit(itemsPerPage) 
             .sort(sort);
-        } else {
-            totalProducts = await Offers.countDocuments({$or: [
-                {offerType: { $in: cookiesArray}},
-                {storeName: { $in: cookiesArray }}
-            ]});
-            products = await Offers.find({$or: [
-                {offerType: { $in: cookiesArray}},
-                {storeName: { $in: cookiesArray }}
-            ]})
-            .skip((page - 1) * itemsPerPage)
-            .limit(itemsPerPage) 
-            .sort(sort);
-        }
+
+    // if(cookiesArray.length !== 0) {
+    //     totalProducts = await Offers.countDocuments({ offerType: { $in: cookiesArray}, storeName: { $in: cookiesArray } });
+    //     if(totalProducts !== 0) {
+    //         products = await Offers.find({ offerType: { $in: cookiesArray}, storeName: { $in: cookiesArray } })
+    //         .skip((page - 1) * itemsPerPage)
+    //         .limit(itemsPerPage) 
+    //         .sort(sort);
+    //     } else {
+    //         totalProducts = await Offers.countDocuments({$or: [
+    //             {offerType: { $in: cookiesArray}},
+    //             {storeName: { $in: cookiesArray }}
+    //         ]});
+    //         products = await Offers.find({$or: [
+    //             {offerType: { $in: cookiesArray}},
+    //             {storeName: { $in: cookiesArray }}
+    //         ]})
+    //         .skip((page - 1) * itemsPerPage)
+    //         .limit(itemsPerPage) 
+    //         .sort(sort);
+    //     }
         
-    } else {
-        console.log("im in");
-        totalProducts = await Offers.countDocuments();
-        products = await Offers.find()
-        .skip((page - 1) * itemsPerPage)
-        .limit(itemsPerPage) 
-        .sort(sort);
-    }
-    console.log("products");
-    console.log(products);
+    // } else {
+    //     totalProducts = await Offers.countDocuments();
+    //     products = await Offers.find()
+    //     .skip((page - 1) * itemsPerPage)
+    //     .limit(itemsPerPage) 
+    //     .sort(sort);
+    // }
     
     return {
         category: "offers",
