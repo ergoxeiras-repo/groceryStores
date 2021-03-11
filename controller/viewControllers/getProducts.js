@@ -15,7 +15,8 @@ exports.getProducts = async function(req, category) {
     const itemsPerPage = 10;
     const storeNames = await Products.aggregate([
         { $match: { "category.subCategory": category } },
-        { $group: { _id: "$storeName" } }
+        { $group: { _id: "$storeName" } },
+        { $sort: { "_id": 1 } }
     ]);
 
     let totalProducts;
