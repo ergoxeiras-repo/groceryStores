@@ -39,8 +39,8 @@
         <% } else { %>
           <select id="orderBy">
             <option value="">Ταξινόμηση</option>
-            <option value="<%= `?query=${products.title}&category=${products.category}&sort=-discountPrice` %>">Φθήνουσα</option>
-            <option value="<%= `?query=${products.title}&category=${products.category}&sort=discountPrice` %>">Αύξουσα</option>
+            <option value="<%= `?sort=-discountPrice` %>">Φθήνουσα</option>
+            <option value="<%= `?sort=discountPrice` %>">Αύξουσα</option>
           </select>
         <% } %>
       </div>

@@ -23,7 +23,11 @@ exports.getProducts = async function(req, category) {
     let products;
     if(storeName.length > 0) {
         totalProducts = await Products.countDocuments({ "category.subCategory": category, storeName: { $in: storeName } });
-        products = await Products.find({ "category.subCategory": category, storeName: { $in: storeName } }); 
+        // products = await Products.find({ "category.subCategory": category, storeName: { $in: storeName } }); 
+        products = await Products.find({"category.subCategory": category})
+            .skip((page - 1) * itemsPerPage)
+            .limit(itemsPerPage) 
+            .sort(sort);
     } else {
         totalProducts = await Products.countDocuments({"category.subCategory": category});
         products = await Products.find({"category.subCategory": category})

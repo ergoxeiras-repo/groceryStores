@@ -210,12 +210,12 @@ async function getOffers(req) {
     ]); 
 
     let totalProducts = await Offers.find(query).countDocuments();
-    console.log
     // console.log(`totalProducts= ${totalProducts}`);
     // console.log(`queryCopy`);
     // console.log(queryCopy);
     // console.log(`page= ${page}`);
     // console.log(`itemsPerPage= ${itemsPerPage}`);
+    
     let products = await Offers.find(query)
             .skip((page - 1) * itemsPerPage)
             .limit(itemsPerPage) 
