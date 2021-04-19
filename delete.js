@@ -1,5 +1,4 @@
 const mongoose = require("mongoose");
-
 const Product = require("./model/productModel");
 
 mongoose.connect("mongodb+srv://groceryDB:ED4FhZVdfP6VHzXV@cluster0-bjjsz.mongodb.net/groceryDB?retryWrites=true&w=majority", { useNewUrlParser: true, useCreateIndex: true, useUnifiedTopology: true });
@@ -15,7 +14,7 @@ async function removeItAll() {
 
     try {
         // const products = await Product.find({"category.mainCategory":"tupopoihmena-trofhma"});
-        await Product.deleteMany({storeName: "Βασιλόπουλος"});
+        await Product.deleteMany({"category.subCategory": "spary gel"});
         console.log(`The category was deleted`);
         // const products = await Product.find({"category.mainCategory":"ugieinh-diatrofh"});
         // console.log(`products: ${products}`)

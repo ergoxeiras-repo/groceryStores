@@ -59,6 +59,8 @@ userSchema.methods.createResetToken = function() {
     //Hashing the token in order to store it in database
     this.passwordResetToken = crypto.createHash("sha256").update(resetToken).digest("hex");
     //Converting the 10 min into milliseconds
+    console.log("Password reset token")
+    console.log(this.passwordResetToken);
     this.passwordResetTokenExp = Date.now() + 10 * 60 * 1000; 
     return resetToken;
 };

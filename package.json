@@ -5,9 +5,7 @@
   "scripts": {
     "test": "NODE_ENV=test nodemon --exec 'mocha --recursive -R min'",
     "start": "node server.js",
-    "dev": "nodemon server.js",
-    "watch:js": "parcel watch ./public/js/index.js --out-dir ./public/js --out-file bundle.js",
-    "build:js": "parcel watch ./public/js/index.js --out-dir ./public/js --out-file bundle.js"
+    "dev": "nodemon server.js"
   },
   "author": "Christos Goulas",
   "license": "ISC",
@@ -24,7 +22,6 @@
     "express": "^4.17.1",
     "express-mongo-sanitize": "^2.0.1",
     "express-rate-limit": "^5.2.3",
-    "express-url-breadcrumb": "^1.0.0",
     "express.js": "^1.0.0",
     "geocoder": "^0.2.3",
     "helmet": "^3.23.3",

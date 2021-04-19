@@ -6,34 +6,30 @@ const mongoSanitize = require("express-mongo-sanitize");
 const xss = require("xss-clean");
 const hpp = require("hpp");
 const cookieParser = require("cookie-parser");
-const breadcrumb = require('express-url-breadcrumb');
 const compression = require("compression");
 
-// VIEW ROUTES
-const viewRouter = require("./router/viewRoutes/viewRoutes");
+const errorHandler = require("./middleware/errorHandler");
+const ThrowsAnError = require("./utils/throwsAnError");
 
 // API ROUTES
 const userRouter = require("./router/userRoutes");
 const reviewRouter = require("./router/reviewRoutes");
-const productRouter = require("./router/productsRoutes");
-const vrefikhFrontidaRouter = require("./router/vrefikhFrontidaRoutes");
-const kavaRouter = require("./router/kavaRoutes");
-const katoikidiaRouter = require("./router/katoikidiaRoutes");
-const proswpikhFrontidaRouter = require("./router/proswpikhFrontidaRoutes");
-const ugieinhDiatrofhRouter = require("./router/ugieinhDiatrofhRoutes");
-const opwropwleioRouter = require("./router/opwropwleioRoutes");
-const galaktokomikaEidhPsugeiouRouter = require("./router/galaktokomikaEidhPsugeiouRoutes");
-const turiaAllantikaDelicatessenRouter = require("./router/turiaAllantikaDelicatessenRoutes");
-const tupopoihmenaTrofhmaRouter = require("./router/tupopoihmenaTrofhmaRoutes");
-const freskoKreasPsariRouter = require("./router/freskoKreasPsariRoutes");
-const prwinoRofhmataRouter = require("./router/prwinoRofhmataRoutes");
-const proiontaArtouRouter = require("./router/proiontaArtouRoutes");
-const snacksRouter = require("./router/snacksRoutes");
-const katharistikaXartikaEidhOikiakhsRouter = require("./router/katharistikaXartikaEidhOikiakhsRoutes");
-const storeLocationRouter = require("./router/storeLocationRoutes");
-
-const throwsAnError = require("./utils/throwsAnError");
-const checkAuth = require('./middleware/check-auth');
+const searchRouter = require("./router/searchRoutes");
+const babyCareRouter = require("./router/products/babyCareRoutes");
+const drinksRouter = require("./router/products/drinksRoutes");
+const frozenFoodsRouter = require("./router/products/frozenFoodsRoutes");
+const petsRouter = require("./router/products/petsRoutes");
+const personalCareRouter = require("./router/products/personalCareRoutes");
+const healthyDietRouter = require("./router/products/healthyDietRoutes");
+const fruitStoreRouter = require("./router/products/fruitStoreRoutes");
+const refrigeratedItemsRouter = require("./router/products/refrigeratedItemsRoutes");
+const cheeseAndDelicatessenRouter = require("./router/products/cheeseAndDelicatessenRoutes");
+const standardFoodsRouter = require("./router/products/standardFoodsRoutes");
+const fishAndMeatRouter = require("./router/products/fishAndMeatRoutes");
+const breakfastRouter = require("./router/products/breakfastRoutes");
+const breadProductsRouter = require("./router/products/breadProductsRoutes");
+const snacksRouter = require("./router/products/snacksRoutes");
+const cleanAndHouseholdRouter = require("./router/products/cleanAndHouseholdRoutes");
 
 const app = express();
 
@@ -46,9 +42,6 @@ if(process.env.NODE_ENV !== "test"){
     
     app.use("/api", limiter);
 }
-
-app.set("view engine", "ejs");
-app.set("views", path.join(__dirname, "views"));
 
 app.use(express.static(path.join(__dirname, "public")));
 app.use(cookieParser());
@@ -65,54 +58,33 @@ app.use(express.urlencoded({extended: true}));
 
 //Preventing HTTP parameter poloution
 // app.use(hpp());
-app.use(breadcrumb());
 app.use(compression());
 
-
-//VIEW ROUTERS
-app.use("/", viewRouter);
-app.get("/view/:name", function(req, res) {
-    const name = req.params.name;
-    res.sendFile(__dirname + `/public/brochures/${name}.pdf`);
-});
-
 // API ROUTERS
-app.use("/api/users", userRouter);
-app.use("/api/review", reviewRouter);
-app.use("/api/products", productRouter);
-app.use("/api/products/vrefikh-frontida", vrefikhFrontidaRouter);
-app.use("/api/products/kava", kavaRouter);
-app.use("/api/products/katoikidia", katoikidiaRouter);
-app.use("/api/products/proswpikh-frontida", proswpikhFrontidaRouter);
-app.use("/api/products/diatrofh", ugieinhDiatrofhRouter);
-app.use("/api/products/opwropwleio", opwropwleioRouter);
-app.use("/api/products/galaktokomika-kai-eidh-psugeiou", galaktokomikaEidhPsugeiouRouter);
-app.use("/api/products/turia-allantika-delicatessen", turiaAllantikaDelicatessenRouter);
-app.use("/api/products/tupopoihmena-trofhma", tupopoihmenaTrofhmaRouter);
-app.use("/api/products/fresko-kreas-kai-psari", freskoKreasPsariRouter);
-app.use("/api/products/prwino-kai-rofhmata", prwinoRofhmataRouter);
-app.use("/api/products/proionta-artou", proiontaArtouRouter);
-app.use("/api/products/snacks", snacksRouter);
-app.use("/api/products/katharistika-xartika-eidh-oikiakhs", katharistikaXartikaEidhOikiakhsRouter);
-app.use("/api/stores", storeLocationRouter);
+app.use("/api/v1/users", userRouter);
+app.use("/api/v1/review", reviewRouter);
+app.use("/api/v1/products", searchRouter);
+app.use("/api/v1/products/vrefikh-frontida", babyCareRouter);
+app.use("/api/v1/products/kava", drinksRouter);
+app.use("/api/v1/products/katepsugmena-trofima", frozenFoodsRouter);
+app.use("/api/v1/products/katoikidia", petsRouter);
+app.use("/api/v1/products/proswpikh-frontida", personalCareRouter);
+app.use("/api/v1/products/diatrofh", healthyDietRouter);
+app.use("/api/v1/products/opwropwleio", fruitStoreRouter);
+app.use("/api/v1/products/galaktokomika-kai-eidh-psugeiou", refrigeratedItemsRouter);
+app.use("/api/v1/products/turia-allantika-delicatessen", cheeseAndDelicatessenRouter);
+app.use("/api/v1/products/tupopoihmena-trofhma", standardFoodsRouter);
+app.use("/api/v1/products/fresko-kreas-kai-psari", fishAndMeatRouter);
+app.use("/api/v1/products/prwino-kai-rofhmata", breakfastRouter);
+app.use("/api/v1/products/proionta-artou", breadProductsRouter);
+app.use("/api/v1/products/snacks", snacksRouter);
+app.use("/api/v1/products/katharistika-xartika-eidh-oikiakhs", cleanAndHouseholdRouter);
 
 // Error handler for routes that do not exist
 app.all("*", (req, res, next) => {
-    // res.status(404).send({
-    //     message: "The page you are looking for does not exist"
-    // });
-    const error = new throwsAnError("The page you are looking for does not exist", 404);
-    next(error);
+    next(new ThrowsAnError("Η σελίδα που ψάχνεται δεν υπάρχει", 404));
 });
 
-// Express' error handler middleware
-// app.use((error, req, res, next) => {
-//     res.status(error.statusCode).json({
-//         status: error.status,
-//         message: error.message,
-//         e: error.e.message ? error.e.message : ""
-//     });
-    
-// });
+app.use(errorHandler);
 
 module.exports = app;

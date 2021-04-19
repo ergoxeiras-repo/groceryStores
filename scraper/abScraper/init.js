@@ -41,21 +41,21 @@ async function init() {
     // let page = await browser.newPage();
     // await page.setViewport({ width: 1366, height: 768});
 
-    await abScraper.scrapeBabyCareURLs();
-    await abScraper.scrapeDrinksURLs();
-    await abScraper.scrapePetsURLs();
-    await abScraper.scrapePersonalCareURLs();
-    await abScraper.scrapeHealthyDietURLs();
-    await abScraper.scrapeFruitsURLs();
-    await abScraper.scrapeDairyRefrigeratedItemsURLs();
-    await abScraper.scrapeAllantikaTuriaDelicatessenURLs();
-    await abScraper.scrapeTupopoihmenaTrofimaURLs();
-    await abScraper.scrapeFreskoKreasKaiPsari();
-    await abScraper.scrapeKatepsugmenaTrofimaURLs();
-    await abScraper.scrapePrwinoKaiRofhmataURLs();
-    await abScraper.scrapeProiontaArtouURLs();
-    await abScraper.scrapeSnacksURLs();
-    await abScraper.scrapeKatharistikaXartikaEidhOikiakhsURLs();
+    // await abScraper.scrapeBabyCareURLs();
+    // await abScraper.scrapeDrinksURLs();
+    // await abScraper.scrapePetsURLs();
+    // await abScraper.scrapePersonalCareURLs();
+    // await abScraper.scrapeHealthyDietURLs();
+    // await abScraper.scrapeFruitsURLs();
+    // await abScraper.scrapeDairyRefrigeratedItemsURLs();
+    // await abScraper.scrapeAllantikaTuriaDelicatessenURLs();
+    // await abScraper.scrapeTupopoihmenaTrofimaURLs();
+    // await abScraper.scrapeFreskoKreasKaiPsari();
+    // await abScraper.scrapeKatepsugmenaTrofimaURLs();
+    // await abScraper.scrapePrwinoKaiRofhmataURLs();
+    // await abScraper.scrapeProiontaArtouURLs();
+    // await abScraper.scrapeSnacksURLs();
+    // await abScraper.scrapeKatharistikaXartikaEidhOikiakhsURLs();
     console.log("Scraper was finished");
 
 };
